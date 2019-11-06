@@ -3,6 +3,6 @@ The flask application package.
 """
 
 from flask import Flask
-application = app = Flask(__name__)
+app = Flask(__name__)
 
-import Tastly.views
+import VitruvianProject.views
