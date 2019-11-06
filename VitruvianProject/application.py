@@ -3,7 +3,7 @@ This script runs the VitruvianProject application using a development server.
 """
 
 from os import environ
-from VitruvianProject import application
+from Tastly import application
 
 if __name__ == '__main__':
     HOST = environ.get('SERVER_HOST', 'localhost')
