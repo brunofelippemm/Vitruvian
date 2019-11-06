@@ -20,7 +20,7 @@ def home():
 def contact():
     """Renders the input page."""
     return render_template(
-        'input.html',
+        'input_music.html',
         title='Input',
         year=datetime.now().year,
         message='Please insert your input'
