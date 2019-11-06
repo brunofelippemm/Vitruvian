@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.902
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "VitruvianProject", "VitruvianProject.pyproj", "{C0D22561-1051-405D-BA10-49760E999A85}"
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "TastlyProject", "TastlyProject.pyproj", "{C0D22561-1051-405D-BA10-49760E999A85}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
