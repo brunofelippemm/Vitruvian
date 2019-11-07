@@ -29,6 +29,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="application.py" />
+    <Compile Include="Tastly\PersonalTaste.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Tastly\TasteService.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Tastly\__init__.py" />
     <Compile Include="Tastly\views.py" />
   </ItemGroup>
