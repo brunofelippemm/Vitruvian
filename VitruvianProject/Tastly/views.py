@@ -12,9 +12,6 @@ from Tastly import app, TasteService
 @app.route('/')
 @app.route('/home')
 def home():
-	tastes = TasteService.findAll()
-	for taste in tastes:
-		print(taste)
 	return render_template(
 		'landing.html',
 		title='Wellcome to vitruvian',
