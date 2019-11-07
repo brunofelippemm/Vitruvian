@@ -1,4 +1,4 @@
-<html xmlns="http://www.w3.org/1999/xhtml">
+﻿<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>{{ title }}</title>
     <meta charset="utf-8" />
@@ -18,9 +18,50 @@
                         <div class="banner_content text-center">
                             <div class="card" style="max-width: 900px;">
                                 <h2>Please enter your info</h2>
-                                <form>
-
+                                {% block content %}
+                                <form method=post>
+                                    <div class="age">
+                                        {{ form.age() }} {{ form.age.label }}
+                                        {% if form.age.errors %}
+                                        <ul class="errors">
+                                            {% for error in form.age.errors %}
+                                            <li>{{ error }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                        {% endif %}
+                                    </div>
+                                    <div class="gender">
+                                        {{ form.gender() }} {{ form.gender.label }}
+                                        {% if form.gender.errors %}
+                                        <ul class="errors">
+                                            {% for error in form.gender.errors %}
+                                            <li>{{ error }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                        {% endif %}
+                                    </div>
+                                    <div class="beverage">
+                                        {{ form.beverage() }} {{ form.beverage.label }}
+                                        {% if form.gender.errors %}
+                                        <ul class="errors">
+                                            {% for error in form.beverage.errors %}
+                                            <li>{{ error }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                        {% endif %}
+                                    </div>
+                                    <div class="smoke">
+                                        {{ form.smoke() }} {{ form.smoke.label }}
+                                        {% if form.smoke.errors %}
+                                        <ul class="errors">
+                                            {% for error in form.smoke.errors %}
+                                            <li>{{ error }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                        {% endif %}
+                                    </div>
                                 </form>
+                                {% endblock %}
                             </div>
                         </div>
                     </div>

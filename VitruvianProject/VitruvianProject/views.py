@@ -5,6 +5,9 @@ Routes and views for the flask application.
 from datetime import datetime
 from flask import render_template
 from VitruvianProject import app
+from VitruvianProject.forms import InputForm
+from wtforms import Form, IntegerField, SelectField 
+from wtforms.validators import DataRequired
 
 @app.route('/')
 @app.route('/home')
@@ -17,14 +20,17 @@ def home():
     )
 
 @app.route('/input')
-def contact():
+def input():
+    """inpun Form."""
+    form = InputForm()
     """Renders the input page."""
     return render_template(
         'input_music.html',
         title='Input',
         year=datetime.now().year,
-        message='Please insert your input'
-    )
+        message='Please insert your input',
+        form= form
+        )
 
 @app.route('/about')
 def about():
