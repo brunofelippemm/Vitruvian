@@ -31,5 +31,4 @@ def saveTaste(taste:PersonalTaste):
 def findAll():
 	with TastlySession() as session:
 		tastes = session.query(PersonalTaste).all()
-		for taste in tastes:
-			print(vars(taste))
+		return tastes
