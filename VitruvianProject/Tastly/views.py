@@ -4,10 +4,10 @@ Routes and views for the flask application.
 
 from datetime import datetime
 from flask import render_template
-from VitruvianProject import app
 from VitruvianProject.forms import InputForm
 from wtforms import Form, IntegerField, SelectField 
 from wtforms.validators import DataRequired
+from Tastly import app
 
 @app.route('/')
 @app.route('/home')
