@@ -7,7 +7,7 @@ class InputForm(FlaskForm):
 
     gender = SelectField('Gender',[validators.DataRequired(message=('Please select a gender'))], choices=[('male', 'Male'), ('female', 'Female')])
 
-    #musicGenre = SelectField('Music genre', [validators.DataRequired(message=('Please select a music genre'))], choices=[('rock', 'Rock'), ('pop', 'Pop'), ('electronic', 'Electronic'), ('country', 'Country')])
+    music = SelectField('Music genre', [validators.DataRequired(message=('Please select a music genre'))], choices=[('rock', 'Rock'), ('pop', 'Pop'), ('electronic', 'Electronic'), ('country', 'Country')])
 
     beverage =  SelectField('Beverage', [validators.DataRequired(message=('Please select a beverage'))], choices=[('beer', 'Beer'), ('wine', 'Wine'), ('wiskey', 'Wiskey'), ('tequila', 'Tequila'), ('vodka', 'Vodka'), ('dosent drink', 'Doesnt drink')])
 

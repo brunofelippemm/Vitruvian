@@ -7,6 +7,9 @@ from flask import render_template, redirect
 from Tastly.forms import InputForm
 from wtforms import Form, IntegerField, SelectField 
 from wtforms.validators import DataRequired
+from Tastly import machine_learning
+from Tastly import TasteService
+import pandas as pd
 
 @app.route('/')
 @app.route('/home')
@@ -39,6 +42,9 @@ def handle_data():
     for info in form:
         final_values[info.name] = info.data
     print(final_values)
+    df = TasteService.findAll()
+    print(df.head())
+    machine_learning.feature_predict(final_values, df, "music")
     return redirect("/")
     
 
