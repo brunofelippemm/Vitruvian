@@ -29,6 +29,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="application.py" />
+    <Compile Include="config.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Tastly\forms.py" />
     <Compile Include="Tastly\PersonalTaste.py">
       <SubType>Code</SubType>

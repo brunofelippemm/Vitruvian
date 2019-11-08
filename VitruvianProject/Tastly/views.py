@@ -3,7 +3,7 @@ Routes and views for the flask application.
 """
 
 from datetime import datetime
-from flask import render_template
+from flask import render_template, redirect
 from Tastly.forms import InputForm
 from wtforms import Form, IntegerField, SelectField 
 from wtforms.validators import DataRequired
@@ -29,6 +29,18 @@ def input():
         message='Please insert your input',
         form= form
         )
+
+
+@app.route('/results', methods=['POST', 'GET'])
+def handle_data():
+    form = InputForm()
+    form.validate_on_submit()
+    final_values = {}
+    for info in form:
+        final_values[info.name] = info.data
+    print(final_values)
+    return redirect("/")
+    
 
 @app.route('/about')
 def about():

@@ -19,9 +19,10 @@
                             <div class="card" style="max-width: 900px;">
                                 <h2>Please enter your info</h2>
                                 {% block content %}
-                                <form method=post>
+                                <form action="results" method=post>
+                                    {{ form.hidden_tag() }}
                                     <div class="age">
-                                        {{ form.age() }} {{ form.age.label }}
+                                        {{ form.age.label }} {{ form.age() }}
                                         {% if form.age.errors %}
                                         <ul class="errors">
                                             {% for error in form.age.errors %}
@@ -31,7 +32,7 @@
                                         {% endif %}
                                     </div>
                                     <div class="gender">
-                                        {{ form.gender() }} {{ form.gender.label }}
+                                        {{ form.gender.label }} {{ form.gender() }}
                                         {% if form.gender.errors %}
                                         <ul class="errors">
                                             {% for error in form.gender.errors %}
@@ -41,7 +42,7 @@
                                         {% endif %}
                                     </div>
                                     <div class="beverage">
-                                        {{ form.beverage() }} {{ form.beverage.label }}
+                                        {{ form.beverage.label }} {{ form.beverage() }}
                                         {% if form.gender.errors %}
                                         <ul class="errors">
                                             {% for error in form.beverage.errors %}
@@ -51,7 +52,7 @@
                                         {% endif %}
                                     </div>
                                     <div class="smoke">
-                                        {{ form.smoke() }} {{ form.smoke.label }}
+                                        {{ form.smoke.label }} {{ form.smoke() }}
                                         {% if form.smoke.errors %}
                                         <ul class="errors">
                                             {% for error in form.smoke.errors %}
@@ -60,6 +61,7 @@
                                         </ul>
                                         {% endif %}
                                     </div>
+                                    <input type="submit" value="Submit">
                                 </form>
                                 {% endblock %}
                             </div>
