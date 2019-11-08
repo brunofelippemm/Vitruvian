@@ -7,7 +7,6 @@ from flask import render_template
 from Tastly.forms import InputForm
 from wtforms import Form, IntegerField, SelectField 
 from wtforms.validators import DataRequired
-from Tastly import app, TasteService
 
 @app.route('/')
 @app.route('/home')

@@ -1,5 +1,6 @@
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String
+
 Base = declarative_base()
 
 class PersonalTaste(Base):
@@ -11,3 +12,13 @@ class PersonalTaste(Base):
 	music = Column(String(40))
 	beverage = Column(String(40))
 	smoker = Column(String(10))
+
+	def toDict(self):
+		return {
+			"gender" : self.gender,
+			"age" : self.age,
+			"country" : self.country,
+			"music" : self.music,
+			"beverage" : self.beverage,
+			"smoker" : self.smoker
+		}

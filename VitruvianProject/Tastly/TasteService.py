@@ -4,6 +4,8 @@ from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func, inspect
 from Tastly.PersonalTaste import PersonalTaste
 from sqlalchemy.ext.declarative import declarative_base
+import pandas as pd
+
 Base = declarative_base()
 
 dbUrl = "postgresql://root:Talegazo0931@mypostgresdb.ck9iopsl8va4.us-east-2.rds.amazonaws.com:5432/TastlyDb"
@@ -31,4 +33,4 @@ def saveTaste(taste:PersonalTaste):
 def findAll():
 	with TastlySession() as session:
 		tastes = session.query(PersonalTaste).all()
-		return tastes
+		return pd.DataFrame.from_records([taste.toDict() for taste in tastes])
