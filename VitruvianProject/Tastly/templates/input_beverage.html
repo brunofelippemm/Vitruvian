@@ -18,7 +18,7 @@
                         <div class="banner_content text-center">
                             <div class="card" style="max-width: 700px;">
                                 <h2>Please enter your info</h2>
-                                <br/>
+                                <br />
                                 {% block content %}
                                 <form action="results" method=post>
                                     {{ form.hidden_tag() }}
@@ -42,11 +42,11 @@
                                         </ul>
                                         {% endif %}
                                     </div>
-                                    <div class="beverage" style="margin-top: 10px;">
-                                        {{ form.beverage.label }} {{ form.beverage() }}
-                                        {% if form.beverage.errors %}
+                                    <div class="music" style="margin-top: 10px;">
+                                        {{ form.music.label }} {{ form.music() }}
+                                        {% if form.music.errors %}
                                         <ul class="errors">
-                                            {% for error in form.beverage.errors %}
+                                            {% for error in form.music.errors %}
                                             <li>{{ error }}</li>
                                             {% endfor %}
                                         </ul>

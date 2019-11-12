@@ -11,3 +11,12 @@ class PersonalTaste(Base):
 	music = Column(String(40))
 	beverage = Column(String(40))
 	smoker = Column(String(10))
+	def toDict(self):
+		return {
+			"gender" : self.gender,
+			"age" : self.age,
+			"country" : self.country,
+			"music" : self.music,
+			"beverage" : self.beverage,
+			"smoker" : self.smoker
+		}

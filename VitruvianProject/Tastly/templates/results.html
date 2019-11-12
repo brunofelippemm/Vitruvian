@@ -1,0 +1,56 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>{{ title }}</title>
+    <meta charset="utf-8" />
+    <title>{{ title }}</title>
+    <link rel="stylesheet" type="text/css" href="/static/content/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="/static/content/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/static/content/site.css" />
+    <link rel="stylesheet" type="text/css" href="/static/content/style.css" />
+    <script src="/static/scripts/modernizr-2.6.2.js"></script>
+</head>
+<body class="landing">
+    <section class="home_banner_area">
+        <div class="banner_inner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="banner_content text-center">
+                            <div class="card" style="max-width: 700px;">
+                                {% block content %}
+                                <h2>Your result was...</h2>
+                                <br />
+                                <h3>{{ prediction }}</h3>
+                                <br />
+                                <h3>Where we right?</h3>
+
+                                <div style="margin-top: 10px;">
+                                    <input type="submit" value="Yes">
+                                </div>
+                                <p style="margin-top: 10px;">If not, select the right option below</p>
+                                <div class="music" style="margin-top: 10px;">
+                                    {{ form.music.label }} {{ form.music() }}
+                                    {% if form.music.errors %}
+                                    <ul class="errors">
+                                        {% for error in form.music.errors %}
+                                        <li>{{ error }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                    {% endif %}
+                                </div>
+                                <div style="margin-top: 10px;">
+                                    <input type="submit" value="Submit">
+                                </div>
+                                {% endblock %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="/static/scripts/jquery-1.10.2.js"></script>
+    <script src="/static/scripts/bootstrap.js"></script>
+    <script src="/static/scripts/respond.js"></script>
+</body>
+</html>
