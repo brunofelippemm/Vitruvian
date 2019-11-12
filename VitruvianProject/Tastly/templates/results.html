@@ -28,19 +28,21 @@
                                     <input type="submit" value="Yes">
                                 </div>
                                 <p style="margin-top: 10px;">If not, select the right option below</p>
-                                <div class="music" style="margin-top: 10px;">
-                                    {{ form.music.label }} {{ form.music() }}
-                                    {% if form.music.errors %}
-                                    <ul class="errors">
-                                        {% for error in form.music.errors %}
-                                        <li>{{ error }}</li>
-                                        {% endfor %}
-                                    </ul>
-                                    {% endif %}
-                                </div>
-                                <div style="margin-top: 10px;">
-                                    <input type="submit" value="Submit">
-                                </div>
+                                <form>
+                                    <div class="music" style="margin-top: 10px;">
+                                        {{ form.music.label }} {{ form.music() }}
+                                        {% if form.music.errors %}
+                                        <ul class="errors">
+                                            {% for error in form.music.errors %}
+                                            <li>{{ error }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                        {% endif %}
+                                    </div>
+                                    <div style="margin-top: 10px;">
+                                        <input type="submit" value="Submit">
+                                    </div>
+                                </form>
                                 {% endblock %}
                             </div>
                         </div>

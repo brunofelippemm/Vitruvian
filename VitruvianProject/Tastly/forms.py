@@ -1,4 +1,4 @@
-from wtforms import Form, IntegerField, validators, SubmitField, SelectField
+from wtforms import Form, IntegerField, validators, SubmitField, SelectField, StringField 
 from flask_wtf import FlaskForm
 from wtforms.validators import ValidationError, DataRequired, Email, EqualTo, Length, NumberRange
 
@@ -11,7 +11,8 @@ class InputForm(FlaskForm):
 
     beverage =  SelectField('Beverage', [validators.DataRequired(message=('Please select a beverage'))], choices=[('beer', 'Beer'), ('wine', 'Wine'), ('wiskey', 'Wiskey'), ('tequila', 'Tequila'), ('vodka', 'Vodka'), ('dosent drink', 'Doesnt drink')])
 
-    smoker = SelectField('Do you smoke?', [validators.DataRequired(message=('Please select a smoking option'))], choices=[('yes', 'Yes'), ('no', 'No')]) 
+    smoker = SelectField('Do you smoke?', [validators.DataRequired(message=('Please select a smoking option'))], choices=[('yes', 'Yes'), ('no', 'No')])
+
 
 class ConfirmForm(FlaskForm):
     gender = SelectField('Gender',[validators.DataRequired(message=('Please select a gender'))], choices=[('male', 'Male'), ('female', 'Female')])

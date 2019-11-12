@@ -3,7 +3,7 @@ Routes and views for the flask application.
 """
 
 from datetime import datetime
-from flask import render_template, redirect
+from flask import render_template, redirect, flash, request
 from Tastly.forms import InputForm
 from wtforms import Form, IntegerField, SelectField 
 from wtforms.validators import DataRequired
@@ -11,6 +11,7 @@ from Tastly import app, TasteService
 from Tastly import machine_learning
 from Tastly.TasteService import findAll
 import pandas as pd
+
 
 @app.route('/')
 @app.route('/home')
@@ -25,7 +26,7 @@ def home():
 def input_music():
     """inpun Form."""
     form = InputForm()
-    chosen_feat = 'music'
+    form.chosen_feat = 'music'
     """Renders the input page."""
     return render_template(
         'input_music.html',
@@ -39,7 +40,7 @@ def input_music():
 def input_beverage():
     """inpun Form."""
     form = InputForm()
-    chosen_feat = 'beverage'
+    form.chosen_feat = 'beverage'
     """Renders the input page."""
     return render_template(
         'input_beverage.html',
@@ -53,7 +54,7 @@ def input_beverage():
 def input_sex():
     """inpun Form."""
     form = InputForm(),
-    chosen_feat = 'sex'
+    form.chosen_feat = 'sex'
     """Renders the input page."""
     return render_template(
         'input_sex.html',
@@ -63,21 +64,14 @@ def input_sex():
         form= form
         )
 
-@app.route('/results')
-def result():
-    """inpun Form."""
-    form = InputForm()
-    """Renders the input page."""
-    return render_template(
-        'results.html',
-        title='Result',
-        year=datetime.now().year,
-        form= form
-        )
+
 
     
 @app.route('/results', methods=['POST', 'GET'])
 def handle_data():
+    for key in request.form:
+        if key.startswith('feat'):
+            chosen_feat = key.partition('.')[-1]
     form = InputForm()
     form.validate_on_submit()
     final_values = {}
@@ -87,15 +81,17 @@ def handle_data():
     final_values.pop('csrf_token')
     print(final_values)
     df = findAll()
-    df.drop(columns= ['country'], inplace = True)
     prediction = machine_learning.feature_predict(final_values, df, chosen_feat)
-    print(prediction)
-    return redirect("/results")
+    return render_template(
+        'results.html',
+        title='Result',
+        year=datetime.now().year,
+        form= form, 
+        prediction = prediction
+        )
 
 @app.route('/confirm-results')
 def confirm_result():
-    """inpun Form."""
-    form = ConfirmForm()
     """Renders the input page."""
     return render_template(
         'thank_you.html',
@@ -104,7 +100,7 @@ def confirm_result():
         form= form
         )
 
-@app.route('/confirm-results', methods=['POST', 'GET'])
+@app.route('/correct-results', methods=['POST', 'GET'])
 def final_data():
     form = ConfirmForm()
     form.validate_on_submit()
