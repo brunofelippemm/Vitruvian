@@ -4,6 +4,8 @@ from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func, inspect
 from Tastly.PersonalTaste import PersonalTaste
 from sqlalchemy.ext.declarative import declarative_base
+import pandas as pd
+
 Base = declarative_base()
 import pandas as pd
 
