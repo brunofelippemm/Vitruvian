@@ -8,7 +8,6 @@ class PersonalTaste(Base):
 	id = Column(Integer, primary_key = True)
 	gender = Column(String(40))
 	age = Column(Integer)
-	country = Column(String(40))
 	music = Column(String(40))
 	beverage = Column(String(40))
 	smoker = Column(String(10))
@@ -17,7 +16,6 @@ class PersonalTaste(Base):
 		return {
 			"gender" : self.gender,
 			"age" : self.age,
-			"country" : self.country,
 			"music" : self.music,
 			"beverage" : self.beverage,
 			"smoker" : self.smoker
