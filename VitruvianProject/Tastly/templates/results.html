@@ -38,35 +38,14 @@
                                     {% if chosen_feat == 'music' %}
                                     <div class="music" style="margin-top: 10px;">
                                         {{ form.music.label }} {{ form.music() }}
-                                        {% if form.music.errors %}
-                                        <ul class="errors">
-                                            {% for error in form.music.errors %}
-                                            <li>{{ error }}</li>
-                                            {% endfor %}
-                                        </ul>
-                                        {% endif %}
                                     </div>
                                     {% elif chosen_feat == 'beverage' %}
                                     <div class="beverage" style="margin-top: 10px;">
                                         {{ form.beverage.label }} {{ form.beverage() }}
-                                        {% if form.beverage.errors %}
-                                        <ul class="errors">
-                                            {% for error in form.beverage.errors %}
-                                            <li>{{ error }}</li>
-                                            {% endfor %}
-                                        </ul>
-                                        {% endif %}
                                     </div>
                                     {% else %}
                                     <div class="gender" style="margin-top: 10px;">
                                         {{ form.gender.label }} {{ form.gender() }}
-                                        {% if form.gender.errors %}
-                                        <ul class="errors">
-                                            {% for error in form.gender.errors %}
-                                            <li>{{ error }}</li>
-                                            {% endfor %}
-                                        </ul>
-                                        {% endif %}
                                     </div>
                                     {% endif %}
 																		<div style="margin-top: 10px;">
