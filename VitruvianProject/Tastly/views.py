@@ -97,6 +97,7 @@ def confirm_result():
 	print(taste)
 	taste = PersonalTaste.fromString(taste)
 	taste.fillValue(feat)
+	print(taste.music)
 	"""Renders the input page."""
 	TasteService.saveTaste(taste)
 	return render_template(
@@ -109,6 +110,7 @@ def confirm_result():
 def final_data():
 	feat = request.form["confirmed_value"]
 	taste = request.form["tentativeTaste"]
+	chosen_feat = request.form["chosenFeat"]
 	print(taste)
 	taste = PersonalTaste.fromString(taste)
 	form = InputForm()
@@ -116,7 +118,13 @@ def final_data():
 	final_values = {}
 	for info in form:
 		final_values[info.name] = info.data
+	feat = final_values[chosen_feat]
+	print(feat)
 	print(final_values)
+	taste.fillValue(feat)
+	print(taste.music)
+	TasteService.saveTaste(taste)
+
 	return render_template(
         'thank_you.html',
         title='Thank You',

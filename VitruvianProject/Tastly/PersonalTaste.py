@@ -24,13 +24,13 @@ class PersonalTaste(Base):
 	def toString(self):
 		return f"gender:{self.gender},age:{self.age},music:{self.music},beverage:{self.beverage},smoker:{self.smoker}"
 
-	def fillValue(value):
-		if(taste.music == "None"):
-			taste.music = value
-		elif(taste.beverage == "None"):
-			taste.beverage = value
+	def fillValue(self, value):
+		if(self.music == "None"):
+			self.music = value
+		elif(self.beverage == "None"):
+			self.beverage = value
 		else:
-			taste.gender = value
+			self.gender = value
 
 
 def fromString(s):
