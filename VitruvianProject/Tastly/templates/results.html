@@ -14,6 +14,7 @@
         <div class="banner_inner">
             <div class="container">
                 <div class="row">
+
                     <div class="col-lg-12">
                         <div class="banner_content text-center">
                             <div class="card" style="max-width: 700px;">
@@ -32,11 +33,34 @@
                                 </form>
                                 <p style="margin-top: 10px;">If not, select the right option below</p>
                                 <form>
+                                    {% if prediction = 'music' %}
                                     <div class="music" style="margin-top: 10px;">
                                         {{ form.music.label }} {{ form.music() }}
                                         {% if form.music.errors %}
                                         <ul class="errors">
                                             {% for error in form.music.errors %}
+                                            <li>{{ error }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                        {% endif %}
+                                    </div>
+                                    {% elif prediction = 'beverage' %}
+                                    <div class="beverage" style="margin-top: 10px;">
+                                        {{ form.beverage.label }} {{ form.beverage() }}
+                                        {% if form.beverage.errors %}
+                                        <ul class="errors">
+                                            {% for error in form.beverage.errors %}
+                                            <li>{{ error }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                        {% endif %}
+                                    </div>
+                                    {% else %}
+                                    <div class="sex" style="margin-top: 10px;">
+                                        {{ form.sex.label }} {{ form.sex() }}
+                                        {% if form.sex.errors %}
+                                        <ul class="errors">
+                                            {% for error in form.sex.errors %}
                                             <li>{{ error }}</li>
                                             {% endfor %}
                                         </ul>
