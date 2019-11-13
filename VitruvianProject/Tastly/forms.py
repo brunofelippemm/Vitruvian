@@ -8,9 +8,9 @@ class InputForm(FlaskForm):
 
     gender = SelectField('Gender',[validators.DataRequired(message=('Please select a gender'))], choices=[('male', 'Male'), ('female', 'Female')])
 
-    music = SelectField('Music genre', [validators.DataRequired(message=('Please select a music genre'))], choices=[('rock', 'Rock'), ('pop', 'Pop'), ('electronic', 'Electronic'), ('country', 'Country')])
+    music = SelectField('Music genre', [validators.DataRequired(message=('Please select a music genre'))], choices=[('rock', 'Rock'), ('Jazz/Blues', 'Jazz/Blues'), ('Forró', 'Forró'), ('Rap', 'Rap'), ('Hip hop', 'Hip hop'), ('Funk', 'Funk'), ('pop', 'Pop'), ('Indie', 'Indie'), ('PUNK', 'PUNK'), ('Reggaeton', 'Reguetton'), ('MPB', 'MPB'), ('electronic', 'Electronic'), ('country', 'Country')])
 
-    beverage =  SelectField('Beverage', [validators.DataRequired(message=('Please select a beverage'))], choices=[('beer', 'Beer'), ('wine', 'Wine'), ('wiskey', 'Wiskey'), ('tequila', 'Tequila'), ('vodka', 'Vodka'), ('dosent drink', 'Doesnt drink')])
+    beverage =  SelectField('Beverage', [validators.DataRequired(message=('Please select a beverage'))], choices=[('beer', 'Beer'), ('wine', 'Wine'), ('Gin', 'Gin'), ('wiskey', 'Wiskey'), ('tequila', 'Tequila'), ('vodka', 'Vodka'), ('dosent drink', 'Doesnt drink')])
 
     smoker = SelectField('Do you smoke?', [validators.DataRequired(message=('Please select a smoking option'))], choices=[('yes', 'Yes'), ('no', 'No')])
 

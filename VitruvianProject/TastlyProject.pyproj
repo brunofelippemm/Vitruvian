@@ -64,8 +64,8 @@
     <Content Include="Tastly\static\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Tastly\static\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Tastly\static\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Tastly\static\images\background.jpg" />
     <Content Include="Tastly\static\images\bar_background.jpg" />
-    <Content Include="Tastly\static\images\beach_background.jpg" />
     <Content Include="Tastly\static\scripts\bootstrap.js" />
     <Content Include="Tastly\static\scripts\bootstrap.min.js" />
     <Content Include="Tastly\static\scripts\jquery-1.10.2.intellisense.js" />
