@@ -25,10 +25,11 @@
                                 <h3>Where we right?</h3>
                                 <form action="confirm-results" method="post">
                                     {{ form.hidden_tag() }}
-                                    <div style="margin-top: 10px;">
-                                        <input type="hidden" value={{ prediction }} name="confimed_value">
-                                        <input type="submit" value="Yes">
-                                    </div>
+																	<div style="margin-top: 10px;">
+																		<input type="hidden" value={{ prediction }} name="confirmed_value">
+																		<input type="hidden" value={{ taste }} name="tentativeTaste">
+																		<input type="submit" value="Yes">
+																	</div>
                                 </form>
                                 <p style="margin-top: 10px;">If not, select the right option below</p>
                                 <form>
