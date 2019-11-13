@@ -23,10 +23,13 @@
                                 <h3>{{ prediction }}</h3>
                                 <br />
                                 <h3>Where we right?</h3>
-
-                                <div style="margin-top: 10px;">
-                                    <input type="submit" value="Yes">
-                                </div>
+                                <form action="confirm-results" method="post">
+                                    {{ form.hidden_tag() }}
+                                    <div style="margin-top: 10px;">
+                                        <input type="hidden" value={{ prediction }} name="confimed_value">
+                                        <input type="submit" value="Yes">
+                                    </div>
+                                </form>
                                 <p style="margin-top: 10px;">If not, select the right option below</p>
                                 <form>
                                     <div class="music" style="margin-top: 10px;">

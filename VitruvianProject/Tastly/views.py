@@ -26,7 +26,6 @@ def home():
 def input_music():
     """inpun Form."""
     form = InputForm()
-    form.chosen_feat = 'music'
     """Renders the input page."""
     return render_template(
         'input_music.html',
@@ -40,7 +39,6 @@ def input_music():
 def input_beverage():
     """inpun Form."""
     form = InputForm()
-    form.chosen_feat = 'beverage'
     """Renders the input page."""
     return render_template(
         'input_beverage.html',
@@ -53,8 +51,7 @@ def input_beverage():
 @app.route('/input-sex')
 def input_sex():
     """inpun Form."""
-    form = InputForm(),
-    form.chosen_feat = 'sex'
+    form = InputForm()
     """Renders the input page."""
     return render_template(
         'input_sex.html',
@@ -90,8 +87,14 @@ def handle_data():
         prediction = prediction
         )
 
-@app.route('/confirm-results')
+@app.route('/confirm-results', methods=['POST', 'GET'])
 def confirm_result():
+    form = InputForm()
+    form.validate_on_submit()
+    print(form.age.data)
+    taste = form.toPersonalTaste()
+    print(taste.age)
+    print(taste.music)
     """Renders the input page."""
     return render_template(
         'thank_you.html',
