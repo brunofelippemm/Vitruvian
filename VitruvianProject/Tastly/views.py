@@ -86,6 +86,7 @@ def handle_data():
         year=datetime.now().year,
         form= form, 
         prediction = prediction,
+        chosen_feat = chosen_feat,
 		taste = taste.toString()
         )
 
