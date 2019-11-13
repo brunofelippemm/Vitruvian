@@ -9,7 +9,7 @@ from wtforms import Form, IntegerField, SelectField
 from wtforms.validators import DataRequired
 from Tastly import app, TasteService, PersonalTaste
 from Tastly import machine_learning
-from Tastly.TasteService import findAll
+from Tastly import TasteService
 import pandas as pd
 
 
@@ -78,7 +78,7 @@ def handle_data():
 		final_values[info.name] = info.data
 	final_values.pop(chosen_feat)
 	final_values.pop('csrf_token')
-	df = findAll()
+	df = TasteService.findAll()
 	prediction = machine_learning.feature_predict(final_values, df, chosen_feat)
 	return render_template(
         'results.html',
@@ -95,13 +95,9 @@ def confirm_result():
 	taste = request.form["tentativeTaste"]
 	print(taste)
 	taste = PersonalTaste.fromString(taste)
-	if(taste.music == "None"):
-		taste.music = feat
-	elif(taste.beverage == "None"):
-		taste.beverage = feat
-	else:
-		taste.gender = feat
+	taste.fillValue(feat)
 	"""Renders the input page."""
+	TasteService.saveTaste(taste)
 	return render_template(
         'thank_you.html',
         title='Thank You',
@@ -110,11 +106,19 @@ def confirm_result():
 
 @app.route('/correct-results', methods=['POST', 'GET'])
 def final_data():
-    form = ConfirmForm()
-    form.validate_on_submit()
-    final_values = {}
-    for info in form:
-        final_values[info.name] = info.data
-    print(final_values)
-    return redirect("/confirm-results")
+	feat = request.form["confirmed_value"]
+	taste = request.form["tentativeTaste"]
+	print(taste)
+	taste = PersonalTaste.fromString(taste)
+	form = InputForm()
+	form.validate_on_submit()
+	final_values = {}
+	for info in form:
+		final_values[info.name] = info.data
+	print(final_values)
+	return render_template(
+        'thank_you.html',
+        title='Thank You',
+        year=datetime.now().year,
+        )
 

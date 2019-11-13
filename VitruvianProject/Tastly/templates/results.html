@@ -33,44 +33,48 @@
 																	</div>
                                 </form>
                                 <p style="margin-top: 10px;">If not, select the right option below</p>
-                                <form>
-                                    {% if prediction = 'music' %}
-                                    <div class="music" style="margin-top: 10px;">
-                                        {{ form.music.label }} {{ form.music() }}
-                                        {% if form.music.errors %}
-                                        <ul class="errors">
-                                            {% for error in form.music.errors %}
-                                            <li>{{ error }}</li>
-                                            {% endfor %}
-                                        </ul>
-                                        {% endif %}
-                                    </div>
-                                    {% elif prediction = 'beverage' %}
-                                    <div class="beverage" style="margin-top: 10px;">
-                                        {{ form.beverage.label }} {{ form.beverage() }}
-                                        {% if form.beverage.errors %}
-                                        <ul class="errors">
-                                            {% for error in form.beverage.errors %}
-                                            <li>{{ error }}</li>
-                                            {% endfor %}
-                                        </ul>
-                                        {% endif %}
-                                    </div>
-                                    {% else %}
-                                    <div class="sex" style="margin-top: 10px;">
-                                        {{ form.sex.label }} {{ form.sex() }}
-                                        {% if form.sex.errors %}
-                                        <ul class="errors">
-                                            {% for error in form.sex.errors %}
-                                            <li>{{ error }}</li>
-                                            {% endfor %}
-                                        </ul>
-                                        {% endif %}
-                                    </div>
-                                    <div style="margin-top: 10px;">
-                                        <input type="submit" value="Submit">
-                                    </div>
-                                </form>
+																<form action="correct-results" method="post">
+																	{{ form.hidden_tag() }}
+																	{% if prediction == 'music' %}
+																	<div class="music" style="margin-top: 10px;">
+																		{{ form.music.label }} {{ form.music() }}
+																		{% if form.music.errors %}
+																		<ul class="errors">
+																			{% for error in form.music.errors %}
+																			<li>{{ error }}</li>
+																			{% endfor %}
+																		</ul>
+																		{% endif %}
+																	</div>
+																	{% elif prediction == 'beverage' %}
+																	<div class="beverage" style="margin-top: 10px;">
+																		{{ form.beverage.label }} {{ form.beverage() }}
+																		{% if form.beverage.errors %}
+																		<ul class="errors">
+																			{% for error in form.beverage.errors %}
+																			<li>{{ error }}</li>
+																			{% endfor %}
+																		</ul>
+																		{% endif %}
+																	</div>
+																	{% else %}
+																	<div class="sex" style="margin-top: 10px;">
+																		{{ form.gender.label }} {{ form.gender() }}
+																		{% if form.gender.errors %}
+																		<ul class="errors">
+																			{% for error in form.gender.errors %}
+																			<li>{{ error }}</li>
+																			{% endfor %}
+																		</ul>
+																		{% endif %}
+																	</div>
+																	{% endif %}
+																	<div style="margin-top: 10px;">
+																		<input type="hidden" value={{ prediction }} name="confirmed_value">
+																		<input type="hidden" value={{ taste }} name="tentativeTaste">
+																		<input type="submit" value="Submit">
+																	</div>
+																</form>
                                 {% endblock %}
                             </div>
                         </div>
