@@ -7,7 +7,7 @@ from flask import render_template, redirect, flash, request
 from Tastly.forms import InputForm
 from wtforms import Form, IntegerField, SelectField 
 from wtforms.validators import DataRequired
-from Tastly import app, TasteService
+from Tastly import app, TasteService, PersonalTaste
 from Tastly import machine_learning
 from Tastly.TasteService import findAll
 import pandas as pd
@@ -66,41 +66,46 @@ def input_sex():
     
 @app.route('/results', methods=['POST', 'GET'])
 def handle_data():
-    for key in request.form:
-        if key.startswith('feat'):
-            chosen_feat = key.partition('.')[-1]
-    form = InputForm()
-    form.validate_on_submit()
-    final_values = {}
-    for info in form:
-        final_values[info.name] = info.data
-    final_values.pop(chosen_feat)
-    final_values.pop('csrf_token')
-    print(final_values)
-    df = findAll()
-    prediction = machine_learning.feature_predict(final_values, df, chosen_feat)
-    return render_template(
+	for key in request.form:
+		if key.startswith('feat'):
+			chosen_feat = key.partition('.')[-1]
+	form = InputForm()
+	form.validate_on_submit()
+	taste = form.toPersonalTaste()
+	print(taste.age)
+	final_values = {}
+	for info in form:
+		final_values[info.name] = info.data
+	final_values.pop(chosen_feat)
+	final_values.pop('csrf_token')
+	df = findAll()
+	prediction = machine_learning.feature_predict(final_values, df, chosen_feat)
+	return render_template(
         'results.html',
         title='Result',
         year=datetime.now().year,
         form= form, 
-        prediction = prediction
+        prediction = prediction,
+		taste = taste.toString()
         )
 
 @app.route('/confirm-results', methods=['POST', 'GET'])
 def confirm_result():
-    form = InputForm()
-    form.validate_on_submit()
-    print(form.age.data)
-    taste = form.toPersonalTaste()
-    print(taste.age)
-    print(taste.music)
-    """Renders the input page."""
-    return render_template(
+	feat = request.form["confirmed_value"]
+	taste = request.form["tentativeTaste"]
+	print(taste)
+	taste = PersonalTaste.fromString(taste)
+	if(taste.music == "None"):
+		taste.music = feat
+	elif(taste.beverage == "None"):
+		taste.beverage = feat
+	else:
+		taste.gender = feat
+	"""Renders the input page."""
+	return render_template(
         'thank_you.html',
         title='Thank You',
         year=datetime.now().year,
-        form= form
         )
 
 @app.route('/correct-results', methods=['POST', 'GET'])

@@ -20,3 +20,20 @@ class PersonalTaste(Base):
 			"beverage" : self.beverage,
 			"smoker" : self.smoker
 		}
+
+	def toString(self):
+		return f"gender:{self.gender},age:{self.age},music:{self.music},beverage:{self.beverage},smoker:{self.smoker}"
+
+def fromString(s):
+	taste = PersonalTaste()
+	fullString = s.split(",")
+	valueDict = dict()
+	for v in fullString:
+		p = v.split(":")
+		valueDict[p[0]] = p[1]
+	taste.age = valueDict["age"]
+	taste.gender = valueDict["gender"]
+	taste.music = valueDict["music"]
+	taste.beverage = valueDict["beverage"]
+	taste.smoker = valueDict["smoker"]
+	return taste
